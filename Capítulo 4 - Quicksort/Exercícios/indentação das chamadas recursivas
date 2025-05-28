@@ -1,0 +1,76 @@
+📦 Exemplo: quicksort([10, 5, 2, 3])
+Vamos representar as chamadas recursivas como uma árvore.
+
+
+
+🌳 Etapa 1: Raiz da recursão
+
+quicksort([10, 5, 2, 3])
+pivô = 10
+menores = [5, 2, 3]
+maiores = []
+
+          quicksort([10, 5, 2, 3])
+                 ↓
+      quicksort([5, 2, 3]) + [10] + quicksort([])
+
+_____________________________________________________
+
+🌳 Etapa 2: Ordenando os menores [5, 2, 3]
+
+quicksort([5, 2, 3])
+pivô = 5
+menores = [2, 3]
+maiores = []
+
+          quicksort([5, 2, 3])
+                 ↓
+      quicksort([2, 3]) + [5] + quicksort([])
+
+_____________________________________________________
+
+🌳 Etapa 3: Ordenando [2, 3]
+
+quicksort([2, 3])
+pivô = 2
+menores = []
+maiores = [3]
+
+          quicksort([2, 3])
+               ↓
+      quicksort([]) + [2] + quicksort([3])
+
+_____________________________________________________
+
+🌳 Etapa 4: Casos-base
+
+quicksort([]) → []
+quicksort([3]) → [3]
+
+_____________________________________________________
+
+Agora voltamos subindo na recursão:
+
+quicksort([2, 3])
+→ [] + [2] + [3]
+→ [2, 3]
+
+_____________________________________________________
+
+🌲 Subindo mais um nível:
+
+quicksort([5, 2, 3])
+→ [2, 3] + [5] + []
+→ [2, 3, 5]
+
+_____________________________________________________
+
+🌲 Subindo até o topo:
+
+quicksort([10, 5, 2, 3])
+→ [2, 3, 5] + [10] + []
+→ [2, 3, 5, 10]
+
+_____________________________________________________
+
+✅ Resultado final: [2, 3, 5, 10]
