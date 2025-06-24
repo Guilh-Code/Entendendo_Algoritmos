@@ -1,0 +1,113 @@
+🧠 Resumo Capítulo 5 – Tabelas Hash
+
+___
+
+✅ O que é uma Tabela Hash?
+Uma tabela hash (ou dicionário) é uma estrutura de dados que associa uma "chave" a um "valor".
+Ela permite buscar, inserir e remover dados de forma muito rápida — geralmente em tempo O(1) (tempo constante).
+
+___
+
+📦 Exemplo real:
+
+precos = {
+    "maçã": 2.5,
+    "banana": 1.8,
+    "abacaxi": 4.0
+}
+
+print(precos["banana"])  # 1.8
+
+___
+
+🔑 Conceito de Chave e Valor:
+
+Chave (key): identificador único
+Valor (value): informação associada à chave
+
+🗂 Exemplo:
+
+agenda = {
+    "Ana": "9999-1234",
+    "Lucas": "9888-5555"
+}
+
+___
+
+⚙️ Como funciona internamente?
+
+- A chave é passada por uma função chamada função hash que transforma essa chave em um índice numérico.
+- Esse índice é usado para guardar ou acessar o valor correspondente no array interno da tabela hash.
+
+___
+
+📌 Aplicações práticas:
+1.Contagem de frequência de palavras, votos, itens, etc.
+2.Verificar se alguém já votou (como no seu exemplo!).
+3.Criar estruturas associativas (como JSON ou dicionários em Python).
+4.Verificar duplicatas em listas.
+
+🧮 Exemplo: contar votos
+
+votos = {}
+
+def votar(nome):
+    if votos.get(nome):
+        print("Já votou!")
+    else:
+        votos[nome] = True
+        print("Pode votar.")
+
+___
+
+⚠️ Colisões
+Duas chaves diferentes podem gerar o mesmo índice hash. Isso é chamado de colisão.
+
+👀 Exemplo ilustrativo:
+
+"maçã" → índice 3
+"uva"  → índice 3  (colisão!)
+Soluções:
+
+- Encadeamento (listas no mesmo índice)
+- Probing (procurar próxima posição livre)
+
+___
+
+⏱ Complexidade:
+Operação	Tempo médio	Pior caso
+Inserção	O(1)	O(n)
+Busca	    O(1)	O(n)
+Remoção	    O(1)	O(n)
+
+Pior caso acontece quando há muitas colisões, mas com uma boa função hash, isso é raro.
+
+___
+
+💡 Dicas para fixar:
+
+Tabelas hash são como listas com acesso por nome em vez de posição.
+
+Usadas em quase todo lugar: bancos de dados, caches, linguagens de programação, etc.
+
+Dicionários em Python são tabelas hash.
+
+Quando precisar armazenar algo com acesso rápido, pense em hash!
+
+___
+
+📝 Exercício sugerido (prático):
+Faça uma função que conta quantas vezes cada fruta aparece em uma lista:
+
+frutas = ["maçã", "banana", "maçã", "laranja", "banana", "banana"]
+
+contagem = {}
+
+for fruta in frutas:
+    if fruta in contagem:
+        contagem[fruta] += 1
+    else:
+        contagem[fruta] = 1
+
+print(contagem)
+# Resultado: {'maçã': 2, 'banana': 3, 'laranja': 1}
